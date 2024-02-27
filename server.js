@@ -27,7 +27,7 @@ const storeItems = new Map([
     ['discount', { priceInCents: 1800, name: 'Discount Ticket' }]
 ])
 
-app.post('/create-checkout-session', async (req, res) => {
+app.post('/api/create-checkout-session', async (req, res) => {
     try {
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
@@ -114,7 +114,7 @@ const cancelReservedSeats = async (bookedSeats, movieID) => {
     }
 }
 
-app.get('/getMovies', async (req, res) => {
+app.get('/api/getMovies', async (req, res) => {
     try {
         let response = []
 
@@ -140,7 +140,7 @@ app.get('/getMovies', async (req, res) => {
       }
 })
 
-app.get('/canceledSession', (req, res) => {
+app.get('/api/canceledSession', (req, res) => {
     const session_id = req.query.session_id;
     let bookedSeats = req.query.bookedSeats;
     const movieID = req.query.movieID;
@@ -155,11 +155,11 @@ app.get('/canceledSession', (req, res) => {
 
 })
 
-app.post('/bookSeats', (req, res) => {
+app.post('/api/bookSeats', (req, res) => {
     reserveSeats(req.body, res)
 })
 
-app.post('/canelReservation', (req, res) => {
+app.post('/api/canelReservation', (req, res) => {
     cancelReservedSeats(req.body.selectedTickets, req.body.movieID)
     res.status(200).json({ message: 'Seats canceled'})
 })
