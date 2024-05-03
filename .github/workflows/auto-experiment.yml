@@ -84,7 +84,7 @@ jobs:
             namespaces:
               - ns-chaos-ipa-test-application
           mode: random-max-percent
-          value: 70
+          value: '70'
           action: pod-failure
           duration: 5m
         EOF
