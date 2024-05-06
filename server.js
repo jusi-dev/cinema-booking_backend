@@ -137,6 +137,7 @@ app.get('/api/getMovies', async (req, res) => {
         
       } catch (e){
         console.log(e)
+        res.send('There was an error: ', e)
       
       } finally {
         // Ensures that the client will close when you finish/error
