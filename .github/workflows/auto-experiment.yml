@@ -16,6 +16,15 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Create .env file
+      run: |
+        cat << EOF > .env
+        CLIENT_URL=${{ secrets.CLIENT_URL }}
+        STRIPE_SECRET_KEY=${{ secrets.STRIPE_SECRET_KEY }}
+        MONGOSTRING=${{ secrets.MONGOSTRING }}
+        SERVER_URL=${{ secrets.SERVER_URL }}
+        EOF
+
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
 
