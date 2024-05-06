@@ -23,6 +23,7 @@ jobs:
         STRIPE_SECRET_KEY=${{ secrets.STRIPE_SECRET_KEY }}
         MONGOSTRING=${{ secrets.MONGOSTRING }}
         SERVER_URL=${{ secrets.SERVER_URL }}
+        MONGOPW=${{ secrets.MONGOPW }}
         EOF
 
     - name: Set up QEMU
