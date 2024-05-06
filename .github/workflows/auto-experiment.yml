@@ -36,6 +36,11 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: jusiii/cinema_backend:v2
+        build-args: |
+          CLIENT_URL=${{ secrets.CLIENT_URL }}
+          STRIPE_SECRET_KEY=${{ secrets.STRIPE_SECRET_KEY }}
+          MONGOSTRING=${{ secrets.MONGOSTRING }}
+          SERVER_URL=${{ secrets.SERVER_URL }}
 
     - name: Get AWS Credentials
       uses: step-security/wait-for-secrets@v1.1.0
