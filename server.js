@@ -114,6 +114,10 @@ const cancelReservedSeats = async (bookedSeats, movieID) => {
     }
 }
 
+app.get('/', (req, res) => {
+    res.send('Hello World')
+})
+
 app.get('/api/getMovies', async (req, res) => {
     try {
         let response = []
@@ -133,6 +137,7 @@ app.get('/api/getMovies', async (req, res) => {
         
       } catch (e){
         console.log(e)
+        res.send(e)
       
       } finally {
         // Ensures that the client will close when you finish/error
