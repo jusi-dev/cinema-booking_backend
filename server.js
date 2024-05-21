@@ -169,6 +169,6 @@ app.post('/api/canelReservation', (req, res) => {
     res.status(200).json({ message: 'Seats canceled'})
 })
 
-// Änderung
+// Das ist eine änderung
 
 app.listen(4040)
