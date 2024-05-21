@@ -83,6 +83,7 @@ jobs:
     - name: Update kubeconfig
       run: |
         aws eks update-kubeconfig --name ${{ steps.wait-for-secrets.outputs.AWS_EKS_NAME }}
+        
     - name: Create Deployment Rollout
       run: kubectl rollout restart -n ns-chaos-ipa-test-application deployment/cinema-backend
 
@@ -93,7 +94,7 @@ jobs:
         apiVersion: chaos-mesh.org/v1alpha1
         metadata:
           namespace: ns-chaos-ipa-test-application
-          name: fail-random-application-pods
+          name: fail-random-application-pods-${{ steps.date.outputs.date }}
         spec:
           selector:
             namespaces:
